@@ -13,4 +13,12 @@ class MenuItem
     def self.all
         @@all
     end
+
+    # def restaurant
+    #     Restaurant.all.map {|res| res.name == self.restaurant}
+    # end
+
+    def owner
+        self.restaurant.owner
+    end
 end
