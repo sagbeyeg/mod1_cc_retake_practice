@@ -21,4 +21,24 @@ class Recipe
     def restaurants
         self.menu_items.map {|item| item.restaurant}
     end
+
+    def prices
+        self.menu_items.map {|item| item.price}
+    end
+
+    def average_price
+        self.prices.inject {|sum, price| sum + price}  / self.prices.size
+    end
+
+    def highest_price
+        self.prices.max
+    end
+
+    def cheapest_restaurant
+        self.menu_items.filter {|res| res.price == self.prices.min}[0].restaurant
+    end
+
+    def self.inactive
+        self.all.select {|rec| rec.restaurants == []}
+    end
 end

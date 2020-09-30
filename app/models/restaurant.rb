@@ -21,4 +21,12 @@ class Restaurant
     def recipes
         self.menu_items.map {|item| item.recipe}
     end
+
+    def has_dish?(recipe)
+        self.recipes.find {|dish| dish == recipe} ? true : false
+    end
+
+    def self.highest_rated
+        self.all.max {|res_a, res_b| res_a.star_rating <=> res_b.star_rating}
+    end
 end

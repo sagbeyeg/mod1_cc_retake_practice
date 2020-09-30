@@ -14,11 +14,11 @@ class MenuItem
         @@all
     end
 
-    # def restaurant
-    #     Restaurant.all.map {|res| res.name == self.restaurant}
-    # end
-
     def owner
         self.restaurant.owner
+    end
+
+    def self.most_expensive_item
+        self.all.max {|item_a, item_b| item_a.price <=> item_b.price}
     end
 end
